@@ -216,5 +216,6 @@ copy_cell(ws["B185"], ws.cell(185, c0), f'=COUNTIFS({Z},"<>")')
 for j, opt in enumerate(OPTS, start=1):
     copy_cell(ws["C185"], ws.cell(185, c0 + j), f'=IFERROR(COUNTIFS({Z},"{opt}*")/${L(c0)}$185,0)')
 
+wb.calculation.fullCalcOnLoad = True  # openpyxl keeps no cached values; make Excel recalc on open
 wb.save(DST)
 print("saved", DST)
